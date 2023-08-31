@@ -24,3 +24,16 @@ int main()
     return 0;
     
 }
+
+// #include<iostream> and #include<iomanip>: These are preprocessor directives that 
+// include necessary header files for input/output operations (iostream) and for 
+// formatting output (iomanip).
+
+
+
+
+
+// setw(10): This is another manipulator from iomanip. It sets the width of the field
+// for the next output. In this case, it sets the width to 10 characters. This means
+//  that the printed content will take up at least 10 characters of space, and if it's 
+//  shorter, the remaining space will be filled with padding.
