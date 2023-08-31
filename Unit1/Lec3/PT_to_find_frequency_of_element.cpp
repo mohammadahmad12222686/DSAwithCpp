@@ -29,7 +29,8 @@ int main()
 // include necessary header files for input/output operations (iostream) and for 
 // formatting output (iomanip).
 
-
+// left: This is a manipulator from the iomanip library. It aligns the output to the 
+// left within the specified width.
 
 
 
