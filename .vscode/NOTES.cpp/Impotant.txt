@@ -1,0 +1,6 @@
+01  #include<iostream> and #include<iomanip>: These are preprocessor directives that 
+include necessary header files for input/output operations (iostream) and for 
+formatting output (iomanip).
+
+
+02 
