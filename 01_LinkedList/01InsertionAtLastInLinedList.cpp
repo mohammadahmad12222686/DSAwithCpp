@@ -28,7 +28,7 @@ void insertAtEnd(node* &head, int val){
 void display(node* head){
     node* temp=head;
     cout<<"Nodes are: ";
-    while(temp->next!=nullptr){
+    while(temp!=nullptr){
         cout<<temp->data<<"->";
         temp=temp->next;
     }
