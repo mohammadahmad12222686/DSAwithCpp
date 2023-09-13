@@ -1,1 +1,3 @@
- void delete()
+if(head=NULL){
+    //     return;
+    // }

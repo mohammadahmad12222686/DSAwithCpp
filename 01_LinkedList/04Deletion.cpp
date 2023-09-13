@@ -16,7 +16,24 @@ void insertBeforeHead(node* &head, int val){
     head=n;
 }
 
+void deletehead(node* &head){
+    node* todelete=head;
+    head=head->next;
+    delete todelete;
+}
+
+
+
+
  void deletekar(node* &head, int key){
+
+    if(head==NULL){
+        return;
+    }
+    if(head->next==NULL){
+        deletehead(head);
+        return;
+    }
     node* temp=head;
     while(temp->next->data!=key){
         temp=temp->next;
@@ -46,7 +63,13 @@ int main(){
     insertBeforeHead(head,3);
     insertBeforeHead(head,4);
     insertBeforeHead(head,5);
+    insertBeforeHead(head,11);
+    insertBeforeHead(head,6);
+    insertBeforeHead(head,7);
+    insertBeforeHead(head,9);
+    insertBeforeHead(head,8);
     deletekar(head, 2);
+    deletehead(head);
     display(head);
 
 }
