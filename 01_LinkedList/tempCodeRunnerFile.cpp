@@ -1,2 +1,0 @@
-reverseList(head);
-    // display(head);
