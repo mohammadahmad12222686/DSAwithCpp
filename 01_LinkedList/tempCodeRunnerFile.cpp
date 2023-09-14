@@ -1,3 +1,2 @@
-if(head=NULL){
-    //     return;
-    // }
+reverseList(head);
+    // display(head);
