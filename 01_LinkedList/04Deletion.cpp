@@ -55,6 +55,37 @@ void display(node* head){
     cout<<"Null";
 
 }
+ node* sortList(node* head) {
+         if(!head){
+            return head;
+        }
+         if(head->next==nullptr){
+            return head;
+        }
+        node* temp=head;
+       
+        while(temp->next!=NULL){
+            node* search=temp->next;
+            node* minnode;
+            int min=1000;
+            while(search->next!=nullptr){
+                if(search->data<min){
+                    min=search->data;
+                    minnode=search;
+                }
+                search=search->next;
+            }
+
+            if(temp->data>min){
+                search->data=temp->data;
+                temp->data=min;
+            }
+   
+            temp=temp->next;
+        }
+        return head;
+        
+    }
 
 int main(){
     node* head=nullptr;
@@ -70,6 +101,8 @@ int main(){
     insertBeforeHead(head,8);
     deletekar(head, 2);
     deletehead(head);
+    display(head);
+    sortList(head);
     display(head);
 
 }
