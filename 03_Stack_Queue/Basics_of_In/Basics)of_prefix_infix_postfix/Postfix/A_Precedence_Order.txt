@@ -1,0 +1,65 @@
+
+Here is a list of operators in C++ in order of precedence, from highest to lowest:
+
+Postfix increment and decrement: ++x --x
+unary negation: -x ~x ++x --x
+multiplicative operators: * / %
+additive operators: + -
+shift operators: << >>
+relational operators: < <= > >=
+equality operators: == !=
+bitwise AND operator: &
+bitwise XOR operator: ^
+bitwise OR operator: |
+logical AND operator: &&
+logical OR operator: ||
+assignment operators: = += -= *= /= %= <<= >>= &= `^= ` |=
+
+
+
+
+Associativity is the order in which operators of the same precedence are evaluated. For example, the * and / operators have the same precedence, and they are evaluated left to right. This means that the expression *a / b is evaluated as follows:
+The * operator is evaluated first.
+The a and b operands are evaluated.
+The result of the multiplication is divided by the result of the division.
+
+
+The += and -= operators are also evaluated left to right. This means that the expression a += b is evaluated as follows:
+The += operator is evaluated first.
+The a operand is evaluated.
+The b operand is evaluated.
+The result of the addition is assigned to the a variable.
+
+
+The << and >> operators are evaluated right to left. This means that the expression a << b is evaluated as follows:
+The << operator is evaluated first.
+The a operand is evaluated.
+The b operand is evaluated.
+The result of the left shift is assigned to the a variable.
+
+
+
+The &= ^=, and |= operators are evaluated right to left. This means that the expression a &= b is evaluated as follows:
+The &= operator is evaluated first.
+The a operand is evaluated.
+The b operand is evaluated.
+The result of the bitwise AND is assigned to the a variable.
+
+
+
+The || and && operators are evaluated left to right. This means that the expression `a || b` is evaluated as follows:
+The || operator is evaluated first.
+The a operand is evaluated.
+If the result of the evaluation of a is true, then the expression is evaluated as follows:
+The b operand is evaluated.
+If the result of the evaluation of b is true, then the expression returns true.
+Otherwise, the expression returns false.
+Otherwise, the expression returns false.
+
+
+
+The `? :` operator is evaluated left to right. This means that the expression `a ? b : c` is evaluated as follows:
+The `? :` operator is evaluated first.
+The a operand is evaluated.
+If the result of the evaluation of a is true, then the expression returns the value of the b operand.
+Otherwise, the expression returns the value of the c operand.
