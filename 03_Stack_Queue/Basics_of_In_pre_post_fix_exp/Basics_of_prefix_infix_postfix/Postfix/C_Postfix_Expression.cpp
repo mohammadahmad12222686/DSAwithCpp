@@ -1,3 +1,19 @@
+/*
+-What is postfix expression?
+ The postfix expression as the name suggests has the operator placed right after the two operands.
+
+-It is of the form <operand><operand><operator>
+
+-In the infix expressions, it is difficult to keep track of the operator precedence whereas here the 
+ postfix expression itself determines the precedence of operators (which is done by the placement of 
+ operators)i.e the operator which occurs first operates on the operand.
+
+-E.g. PQ-C/, here – operation is done on P and Q and then / is applied on C and the previous result.
+
+-A postfix expression is a parenthesis-free expression. For evaluation, we evaluate it from left to right.
+
+*/
+
 // Example
 
 // Consider the following infix expression:
