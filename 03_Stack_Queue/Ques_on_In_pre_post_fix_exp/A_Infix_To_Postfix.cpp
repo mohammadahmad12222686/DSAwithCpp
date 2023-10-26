@@ -20,8 +20,8 @@ Else, Pop all the operators from the stack which are greater than or equal to in
 */
 
 
-#include<stack>
-int prec(char c) {
+#include<stack>                  //stack use karne ke liye 
+int prec(char c) {                  //function banaya hai ahmad bhai yaha precendence compare karne ke liye                                          
   if (c == '^')
     return 3;
   else if (c == '/' || c == '*')
