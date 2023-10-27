@@ -5,9 +5,11 @@ Approach: To convert Infix expression to Postfix
 2. If the scanned character is an operand, Print it. 
 
 3. Else, 
+If the precedence of the scanned operator is greater than the precedence of the operator in the stack or the stack is 
+empty or the stack contains a ‘(‘, push the character into the stack. Else, Pop all the operators from the stack which 
+are greater than or equal to in precedence than that of the scanned operator. After doing that Push the scanned
+operator to the stack. 
 
-If the precedence of the scanned operator is greater than the precedence of the operator in the stack or the stack is empty or the stack contains a ‘(‘, push the character into the stack. 
-Else, Pop all the operators from the stack which are greater than or equal to in precedence than that of the scanned operator. After doing that Push the scanned operator to the stack. 
 4. If the scanned character is an ‘(‘, push it into the stack. 
 
 5. If the scanned character is an ‘)’, pop the stack and output it until a ‘(‘ is encountered, and discard both the parenthesis. 

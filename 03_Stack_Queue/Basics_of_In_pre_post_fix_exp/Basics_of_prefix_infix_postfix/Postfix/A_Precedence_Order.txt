@@ -1,6 +1,6 @@
-
 Here is a list of operators in C++ in order of precedence, from highest to lowest:
 
+power ^
 Postfix increment and decrement: ++x --x
 unary negation: -x ~x ++x --x
 multiplicative operators: * / %
@@ -15,6 +15,7 @@ logical AND operator: &&
 logical OR operator: ||
 assignment operators: = += -= *= /= %= <<= >>= &= `^= ` |=
 
+                                                     #TRICK: PIDUMASREBLA#
 
 
 
