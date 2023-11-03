@@ -72,16 +72,6 @@ class PayrollSystem {
         employees.add(employee);
     }
 
-    public boolean deleteEmployee(int id) {
-        for (Employee employee : employees) {
-            if (employee.getId() == id) {
-                employees.remove(employee);
-                return true;
-            }
-        }
-        return false;
-    }
-
     public List<Employee> getEmployees() {
         return employees;
     }
@@ -107,111 +97,78 @@ class PayrollSystem {
 
 public class PayrollManagementSystem {
     private static final String DATA_FILE = "employee_data.dat";
-    private static PayrollSystem payrollSystem;
+    private static String currentUserRole;
 
     public static void main(String[] args) {
-        payrollSystem = new PayrollSystem();
-        payrollSystem.loadEmployeeData(DATA_FILE);
+        JFrame loginFrame = new JFrame("Login");
+        loginFrame.setSize(300, 150);
+        loginFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        loginFrame.setLayout(new FlowLayout());
 
-        JFrame frame = new JFrame("Payroll Management System");
-        frame.setSize(400, 300);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setLayout(new FlowLayout());
+        JRadioButton adminButton = new JRadioButton("Admin");
+        JRadioButton userButton = new JRadioButton("User");
+        ButtonGroup roleRadioGroup = new ButtonGroup();
+        roleRadioGroup.add(adminButton);
+        roleRadioGroup.add(userButton);
 
-        JTextField idField = new JTextField(10);
         JTextField nameField = new JTextField(10);
-        JTextField hoursWorkedField = new JTextField(10);
-        JTextField hourlyRateField = new JTextField(10);
+        JPasswordField passwordField = new JPasswordField(10);
+        JButton loginButton = new JButton("Login");
 
-        JButton addHourlyEmployeeButton = new JButton("Add Hourly Employee");
-        JButton displayEmployeesButton = new JButton("Display Employees");
-        JButton deleteEmployeeButton = new JButton("Delete Employee");
-        JButton saveDataButton = new JButton("Save Employee Data");
+        loginFrame.add(new JLabel("Select Role:"));
+        loginFrame.add(adminButton);
+        loginFrame.add(userButton);
+        loginFrame.add(new JLabel("Name: "));
+        loginFrame.add(nameField);
+        loginFrame.add(new JLabel("Password: "));
+        loginFrame.add(passwordField);
+        loginFrame.add(loginButton);
 
-        frame.add(new JLabel("ID: "));
-        frame.add(idField);
-        frame.add(new JLabel("Name: "));
-        frame.add(nameField);
-        frame.add(new JLabel("Hours Worked: "));
-        frame.add(hoursWorkedField);
-        frame.add(new JLabel("Hourly Rate: "));
-        frame.add(hourlyRateField);
-        frame.add(addHourlyEmployeeButton);
-        frame.add(displayEmployeesButton);
-        frame.add(deleteEmployeeButton);
-        frame.add(saveDataButton);
-
-        addHourlyEmployeeButton.addActionListener(new ActionListener() {
+        loginButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                try {
-                    int id = Integer.parseInt(idField.getText());
-                    String name = nameField.getText();
-                    double hoursWorked = Double.parseDouble(hoursWorkedField.getText());
-                    double hourlyRate = Double.parseDouble(hourlyRateField.getText());
-
-                    Employee hourlyEmployee = new HourlyEmployee(id, name, hoursWorked, hourlyRate);
-                    payrollSystem.addEmployee(hourlyEmployee);
-
-                    idField.setText("");
-                    nameField.setText("");
-                    hoursWorkedField.setText("");
-                    hourlyRateField.setText("");
-
-                    JOptionPane.showMessageDialog(frame, "Hourly Employee added successfully!");
-                } catch (NumberFormatException ex) {
-                    JOptionPane.showMessageDialog(frame, "Invalid input. Please enter valid data.");
-                }
-            }
-        });
-
-        displayEmployeesButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                List<Employee> employees = payrollSystem.getEmployees();
-                StringBuilder employeeInfo = new StringBuilder("Employees:\n");
-
-                for (Employee employee : employees) {
-                    employeeInfo.append(employee.toString()).append("\n");
-                }
-
-                JTextArea textArea = new JTextArea(10, 30);
-                textArea.setText(employeeInfo.toString());
-                textArea.setEditable(false);
-
-                JScrollPane scrollPane = new JScrollPane(textArea);
-                JOptionPane.showMessageDialog(frame, scrollPane, "Employee List", JOptionPane.INFORMATION_MESSAGE);
-            }
-        });
-
-        deleteEmployeeButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                try {
-                    int id = Integer.parseInt(idField.getText());
-                    boolean deleted = payrollSystem.deleteEmployee(id);
-
-                    if (deleted) {
-                        JOptionPane.showMessageDialog(frame, "Employee deleted successfully!");
+                if (adminButton.isSelected()) {
+                    if (nameField.getText().equals("admin") && new String(passwordField.getPassword()).equals("admin")) {
+                        currentUserRole = "Admin";
+                        loginFrame.dispose();
+                        openAdminPanel();
                     } else {
-                        JOptionPane.showMessageDialog(frame, "Employee with ID " + id + " not found.");
+                        JOptionPane.showMessageDialog(loginFrame, "Admin authentication failed.");
                     }
-
-                    idField.setText("");
-                } catch (NumberFormatException ex) {
-                    JOptionPane.showMessageDialog(frame, "Invalid input. Please enter a valid ID.");
+                } else if (userButton.isSelected()) {
+                    if (nameField.getText().equals("user") && new String(passwordField.getPassword()).equals("user")) {
+                        currentUserRole = "User";
+                        loginFrame.dispose();
+                        openUserPanel();
+                    } else {
+                        JOptionPane.showMessageDialog(loginFrame, "User authentication failed.");
+                    }
                 }
             }
         });
 
-        saveDataButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                payrollSystem.saveEmployeeData(DATA_FILE);
-                JOptionPane.showMessageDialog(frame, "Employee data saved successfully!");
-            }
-        });
+        loginFrame.setVisible(true);
+    }
 
-        frame.setVisible(true);
+    private static void openUserPanel() {
+        JFrame userFrame = new JFrame("User Panel");
+        userFrame.setSize(600, 400);
+        userFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        // Create user-specific GUI components and actions here
+        // For example, you can display user details and leave request options
+
+        userFrame.setVisible(true);
+    }
+
+    private static void openAdminPanel() {
+        JFrame adminFrame = new JFrame("Admin Panel");
+        adminFrame.setSize(600, 400);
+        adminFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        // Create admin-specific GUI components and actions here
+        // For example, you can add buttons for adding employees and handling leave requests
+
+        adminFrame.setVisible(true);
     }
 }
