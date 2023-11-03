@@ -168,14 +168,45 @@ public class TransportEnquiryManagementSystem {
     }
 
     private static void loadUsersAndAdmins() {
-        // Load user and admin information from a file (e.g., users.txt and admins.txt)
-        // Format: username,password
-        // Read the file and populate the users and admins lists.
+        users = loadUsersFromFile("users.txt");
+        admins = loadAdminsFromFile("admins.txt");
+    }
+
+    private static List<User> loadUsersFromFile(String filename) {
+        List<User> userList = new ArrayList<>();
+        try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] parts = line.split(",");
+                if (parts.length == 2) {
+                    userList.add(new User(parts[0], parts[1]));
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return userList;
+    }
+
+    private static List<Admin> loadAdminsFromFile(String filename) {
+        List<Admin> adminList = new ArrayList<>();
+        try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] parts = line.split(",");
+                if (parts.length == 2) {
+                    adminList.add(new Admin(parts[0], parts[1]));
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return adminList;
     }
 
     private static boolean adminLogin() {
         String adminUsername = JOptionPane.showInputDialog("Admin Username:");
-        String adminPassword = JOptionPane.showInputDialog("Admin Password:");
+        String adminPassword = JOptionPane.showInputDialog("Admin Password");
         
         for (Admin admin : admins) {
             if (admin.getUsername().equals(adminUsername) && admin.getPassword().equals(adminPassword)) {
@@ -188,7 +219,7 @@ public class TransportEnquiryManagementSystem {
 
     private static boolean userLogin() {
         String userUsername = JOptionPane.showInputDialog("User Username:");
-        String userPassword = JOptionPane.showInputDialog("User Password:");
+        String userPassword = JOptionPane.showInputDialog("User Password");
         
         for (User user : users) {
             if (user.getUsername().equals(userUsername) && user.getPassword().equals(userPassword)) {
@@ -200,14 +231,24 @@ public class TransportEnquiryManagementSystem {
     }
 
     private static void openUserPanel() {
-        // Implement user panel functionality
-        // Allow users to inquire about transport information
-        // Display transport details, allow user actions, etc.
+        JFrame userFrame = new JFrame("User Panel");
+        userFrame.setSize(600, 400);
+        userFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        // Create user-specific GUI components and actions here
+        // For example, you can add buttons, text fields, and action listeners
+
+        userFrame.setVisible(true);
     }
 
     private static void openAdminPanel() {
-        // Implement admin panel functionality
-        // Allow admins to manage transport information
-        // Add, edit, delete transport details, etc.
+        JFrame adminFrame = new JFrame("Admin Panel");
+        adminFrame.setSize(600, 400);
+        adminFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        // Create admin-specific GUI components and actions here
+        // For example, you can add buttons, text fields, and action listeners
+
+        adminFrame.setVisible(true);
     }
 }
