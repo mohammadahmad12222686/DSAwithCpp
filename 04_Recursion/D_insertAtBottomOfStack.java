@@ -1,7 +1,7 @@
 
 import java.util.Stack;
 
-public class insertAtBottomOfStack {
+public class D_insertAtBottomOfStack {
 
     // Function to insert an element at the bottom of a stack
     static void insertAtBottom(Stack<Integer> stack, int item) {
