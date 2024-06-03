@@ -1,7 +1,6 @@
 import java.util.Stack;
 
 public class E_SortStack {
-   
     // Function to insert an element at the correct position in the stack
     static void insertAtCorrectPosition(Stack<Integer> stack, int item) {
         if (stack.isEmpty() || item > stack.peek()) {
@@ -24,10 +23,11 @@ public class E_SortStack {
 
     public static void main(String[] args) {
         Stack<Integer> stack = new Stack<>();
-        stack.push(1);
-        stack.push(5);
+        stack.push(11);
+        stack.push(2);
+        stack.push(32);
         stack.push(3);
-
+        stack.push(41);
         System.out.println("Stack before sorting:");
         System.out.println(stack);
 
