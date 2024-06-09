@@ -7,6 +7,7 @@ public class D_insertAtBottomOfStack {
     static void insertAtBottom(Stack<Integer> stack, int item) {
         if (stack.isEmpty()) {
             stack.push(item);
+            
         } else {
             int temp = stack.pop();
             insertAtBottom(stack, item);
