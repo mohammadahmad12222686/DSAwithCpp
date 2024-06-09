@@ -1,3 +1,5 @@
+// https://www.geeksforgeeks.org/problems/reverse-a-stack/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=reverse-a-stack
+
 import java.util.*;
 class F_ReverseStack
 {
